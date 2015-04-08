@@ -1,5 +1,5 @@
-# phantomazzi.js - DOM rasterizer
-**phantomazzi.js** ia a simple [PhantomJS](http://phantomjs.org/) script to rasterize each DOM element of the given class to a separate PNG file
+# phantomazzi - DOM rasterizer
+**phantomazzi** ia a simple [PhantomJS](http://phantomjs.org/) script to rasterize each DOM element of the given class to a separate PNG file
 
 ## Installation
 
