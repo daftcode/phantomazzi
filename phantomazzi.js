@@ -20,13 +20,14 @@ var page = require('webpage').create(),
     address, output, wrapper, box, count;
 
 if (system.args.length < 4) {
+    Console.log("Invalid arguments");
     phantom.exit(1);
 } else {
     address = system.args[1];
     wrapper = system.args[2];
     output = system.args[3];
 
-    page.viewportSize = { width: 1200, height: 600 };
+    page.viewportSize = { width: 1920, height: 1080 };
     page.open(address, function (status) {
         if (status !== 'success') {
             console.log('Unable to load the address!');
@@ -44,8 +45,7 @@ if (system.args.length < 4) {
 }
 
 function renderBox(i) {
-    box = page.evaluate("function(){elem = document.getElementsByClassName('"+wrapper+"')["+i+"];return {top: elem.offsetTop, left: elem.offsetLeft, width: elem.offsetWidth, height: elem.offsetHeight};}");
-    page.clipRect = { top: box.top, left: box.left, width: box.width, height: box.height };
+    page.clipRect = page.evaluate("function(){return document.getElementsByClassName('"+wrapper+"')["+i+"].getBoundingClientRect();}");
     window.setTimeout(function () {
         page.render(output+'_'+i+'.png');
         if(++i<count) { renderBox(i) } else { phantom.exit(); }
