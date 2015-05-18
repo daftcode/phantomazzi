@@ -20,7 +20,7 @@ var page = require('webpage').create(),
     address, output, wrapper, box, count;
 
 if (system.args.length < 4) {
-    Console.log("Invalid arguments");
+    console.log("Invalid arguments");
     phantom.exit(1);
 } else {
     address = system.args[1];
